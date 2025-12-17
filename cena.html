@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Cena con delitto</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #2b2b52, #000000);
+      color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      padding: 30px 20px 40px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+      text-align: center;
+      border: 1px solid #ffcc00;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffcc00;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      margin-bottom: 25px;
+      color: #ddd;
+    }
+
+    .code-box {
+      margin-bottom: 25px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    input[type="password"] {
+      padding: 8px 10px;
+      border-radius: 5px;
+      border: 1px solid #444;
+      background-color: #111;
+      color: #f5f5f5;
+      width: 120px;
+      text-align: center;
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 8px 16px;
+      border-radius: 5px;
+      border: none;
+      background-color: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #ffdd33;
+    }
+
+    #message {
+      margin-top: 10px;
+      min-height: 20px;
+      font-size: 0.95rem;
+    }
+
+    .videos-wrapper {
+      margin-top: 25px;
+      display: none; /* nascosti finché il codice non è corretto */
+    }
+
+    .video-block {
+      margin-bottom: 30px;
+    }
+
+    .video-title {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    video {
+      max-width: 100%;
+      width: 520px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+      border: 2px solid #444;
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      margin-top: 10px;
+      color: #aaaaaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Videosorveglianza Villa Montfort</h1>
+    <p class="subtitle">Inserisci il codice segreto per sbloccare i video.</p>
+
+    <div class="code-box">
+      <label for="codeInput">Codice:</label>
+      <input type="password" id="codeInput" />
+      <button onclick="checkCode()">Accedi</button>
+      <p id="message"></p>
+    </div>
+
+    <div class="videos-wrapper" id="videos">
+      <div class="video-block">
+        <p class="video-title">Video 1</p>
+        <video controls>
+          <source src="video1.mp4" type="video/mp4">
+          Il tuo browser non supporta il tag video.
+        </video>
+      </div>
+
+      <div class="video-block">
+        <p class="video-title">Video 2</p>
+        <video controls>
+          <source src="video2.mp4" type="video/mp4">
+          Il tuo browser non supporta il tag video.
+        </video>
+      </div>
+
+      <p class="footer-note">Ricorda: non condividere questo link con chi non ha il permesso di vedere i video. Buon divertimento.</p>
+    </div>
+  </div>
+
+  <script>
+    const CORRECT_CODE = "1004"; // cambia qui il codice se vuoi
+
+    function checkCode() {
+      const input = document.getElementById("codeInput").value.trim();
+      const message = document.getElementById("message");
+      const videosDiv = document.getElementById("videos");
+
+      if (input === CORRECT_CODE) {
+        message.style.color = "#7CFC00";
+        message.textContent = "Codice corretto! Video sbloccati.";
+        videosDiv.style.display = "block";
+      } else {
+        message.style.color = "#ff4444";
+        message.textContent = "Codice errato. Riprova.";
+        videosDiv.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
